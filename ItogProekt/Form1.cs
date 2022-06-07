@@ -163,7 +163,11 @@ namespace ItogProekt
             Graphics gr = e.Graphics;
             Pen p = new Pen(Color.Black, 2);// цвет линии и ширина
             p.DashStyle = System.Drawing.Drawing2D.DashStyle.Dash;
-            gr.DrawLine(p, p1, p2);// рисуем линию
+            if (!launch)
+            {
+                gr.DrawLine(p, p1, p2);// рисуем линию
+            }
+            
             Pen p5 = new Pen(Color.Black, 3);
 
 
@@ -208,6 +212,7 @@ namespace ItogProekt
             {
                 moveLeft = true;
             }
+           
             if (e.KeyCode == Keys.Right)
             {
              moveRight = true;
@@ -227,18 +232,10 @@ namespace ItogProekt
             {
                 moveLeft = false;
             }
-            // if (e.KeyCode == Keys.Right)
-            // {
-            //     moveRight = false;
-            // }
-
-        }
-
-        private void Form1_KeyPress(object sender, KeyPressEventArgs e)
-        {
-            p1 = new PointF(this.Width / 2, this.Height - 100);
-            xp = p1.X - 25;
-            yp = p1.Y - 25;
+            if (e.KeyCode == Keys.Right)
+            {
+                moveRight = false;
+            }
         }
     }
 }
