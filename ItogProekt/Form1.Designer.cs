@@ -73,6 +73,7 @@
             this.label2.TabIndex = 2;
             this.label2.Text = "Есть попадание!";
             this.label2.Visible = false;
+            this.label2.Click += new System.EventHandler(this.label2_Click);
             // 
             // Form1
             // 

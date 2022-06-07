@@ -21,6 +21,8 @@ namespace ItogProekt
         float ye = 0F;
         float xp = 325;
         float yp = 375;
+        int m = 0;
+        int q = 0;
         double n = 0,launt=0;
         int i = 0;
         int c = 3;
@@ -117,25 +119,13 @@ namespace ItogProekt
             else if (moveRight && !moveLeft) feta += 3.14 / 240; //движение "траектории"
             p2.X = 10000 * float.Parse(Math.Cos(feta).ToString());
             p2.Y = 10000 * float.Parse(Math.Sin(feta).ToString());
+
             if ((Math.Abs(xe-xp)<=32) && (Math.Abs(ye - yp) <= 32)) //коллизия
             {
                 BackColor = Color.Pink;
                 i++;
                 c++;
-                int q = 0;
-                while (q<100)
-                {
-                    q++;
-                    label2.Visible = true;
-                    
-                }
-                if (q>=100)
-                {
-                    label2.Visible = false;
-                }
-
-                
-
+                m = 1000;
                 launt = 0;
                 launch = false;
                 xp = p1.X - 25;
@@ -150,6 +140,28 @@ namespace ItogProekt
                 
                 button1.Visible = true;
                 button1.Enabled = true;
+            }
+            if (m == 100)
+            {
+                if (q<100)
+                {
+                    label2.Visible = true;
+                    label2.Enabled = true;
+                    q++;
+                    m = 110;
+
+                }
+                else if (m!=100)
+                {
+                    label2.Visible = false;
+                    label2.Enabled = false;
+                }
+
+            }
+            else if(q==10)
+            {
+                label2.Visible = false;
+                label2.Enabled = false;
             }
 
             label1.Text = $"{i} Попаданий\r\n{c} В запасе";//статистика
@@ -197,6 +209,11 @@ namespace ItogProekt
             e.Graphics.FillEllipse(greenBrush, xp, yp, width, height);
 
 
+
+        }
+
+        private void label2_Click(object sender, EventArgs e)
+        {
 
         }
 
